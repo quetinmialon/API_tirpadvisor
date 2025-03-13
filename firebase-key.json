@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tripadvisortestingwebservice",
+  "private_key_id": "7293d7d7452be846da4a82b13431f5b86e718e8f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDnJN/paGkzPA/T\nZeZPdjterDh5K5fh+R7vA6t8z69GiRZtYdsgyVBVBOw7Hw6+35NrnfFDMlaNy5R5\nt7PfxIwZo0AhrYu9Z1/7sL9FId7EeXDhdmezW223eZWPMwO8g0j25FLQAgWUFm8q\nMUySAgF7XxOB3eTy0tq7zY68KChuaTXnhdC5y8k12z3MdjtCVOSmOUxK7R0gbXJf\n89oHL+116A9znPFt/CvtYewMmfOwE2xF3accoSy6/P7XCRhGezSM4YU5YsmxdKWi\nrXC323YGT65p2jrpJBjW7ikW8DaPWry6eZZzUXwYUBNfbEcgPxa1G/XiCHSHvPYO\nGNV1VvhlAgMBAAECggEAAJrkJ8GBXJdSTq8BDRSymS/kuIzgnMB3Vpzt5W/974Nh\npswluj5+Qn0c9coO33kicueEYrT+ebULQ+bmWa/ZrDu1HR5BILzYSSAGxCWcTNHc\nXCHtKapHDX7Y1IZ66RLdgK3xn8AQzfj7Qs/c7JkePvmTyYt9Ga8FHQ6i8MM/JdjV\n4gF8ooTQFxK7qj5n8ZnhYMRALXgMBGsT8I6Q/KjX5YHJfDMKRt4iQmTNiIZC9jpR\nIU4vpbiAZpozHxi/Q7JsgGMeFUWBEAq75198VfyPiEx4yAUQH4RpxbboJID917MG\nMPl425I3Flia6dtZ3cWCquXfkIrMCztj35tRfjiPGQKBgQD1ZtHxWGbyk4/oRl7X\nMmnUtdjE2YCIJJxIXe+PdWHy8sz55X02X/zTSYAylGvFq16eu3rkj7HljS6i/q6W\nR4UkNM5SEMLk+oJcMOzVnMbadhPQtbrJvE8OcqTqA5Qz7LJUgyyNix0hW5hNJcuC\ns35sQVSIruOLrIjH2xRf804z2QKBgQDxIGviW0dtX+2P6Ackx26jOywCc7NWItjp\nfVgqmJ+1fm397D+zbq5ZkahhdYB/z5zqKLEsylft3EChsGhLdklCsSKwc6FoyXSk\nwt+Or8p84hQzhaWbvAlcRsUrXJRGP8T/iOiOedEH5iPM/0IfWGrzaX71Mpq+4UV7\nlBosB4PtbQKBgHSzRtedEKf/IIp3HJb99HIhYEqMnKEht+h6M3hnfAMLEAsu5VK8\nZwEbjQmAp5fDHSYjRhf3dcQSVcFRmDkDHf/P1OYV7njx4Jhy883J1o8BY/72zTMu\nh/H49xAKT6o5v7yM/Nz68QlyA4V8mcE4FsDoeIjfknpTvGA+gPv4OpJRAoGAF/pG\nYCL9jlXMtNO46iJe0SKQNMo2mikq8sUBIHM+5nhlDawRhZFLCyMd4Fsj5RHLI8na\nHH8ekUumra1yIZbooBYnQe6trVLjI4MxYen/M73zjlAK8NqY/7EV6ELzh6zNtS9z\nGL/qVmO/SaJUe/N55yylcFKQ6sxR8YD/vUMeDl0CgYBE0pxxnrYlNBBen9pmbh4c\nTNoqrWmR4VRy0OIH/OM+fO9YylMA6VNsZiydMcbVIUMECOs6uTCtJSOHc8ZAADLK\nQF3FIVY0U7ZeSLejayFTG79pBIqOsH7a4T3n1Y7q2t2gANKTwQBY+d3iu7PDo3yc\nutHpSDQJLfuo8dbW4gzxoA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@tripadvisortestingwebservice.iam.gserviceaccount.com",
+  "client_id": "109083461049056424001",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40tripadvisortestingwebservice.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
