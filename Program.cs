@@ -15,6 +15,7 @@ Env.Load();
 var environment = builder.Environment.EnvironmentName;
 
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+var databasePort = Environment.GetEnvironmentVariable("DATABASE_PORT");
 string connectionString;
 
 if (!string.IsNullOrEmpty(databaseUrl))
