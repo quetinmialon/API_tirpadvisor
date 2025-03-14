@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using tripAdvisorAPI.DTO;
 using tripAdvisorAPI.Services;
@@ -6,12 +7,14 @@ namespace tripAdvisorAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ActivityController(ActivityService activityService) : ControllerBase
 {
     private readonly ActivityService _activityService = activityService;
 
     // 🚀 GET: api/Activity
     [HttpGet]
+    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<ActivityDTORead>>> GetActivities()
     {
         return Ok(await _activityService.GetAllActivitiesAsync());
@@ -19,6 +22,7 @@ public class ActivityController(ActivityService activityService) : ControllerBas
 
     // 🚀 GET: api/Activity/{id}
     [HttpGet("{id}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetActivityById(int id)
     {
         var activity = await _activityService.GetActivityByIdAsync(id);

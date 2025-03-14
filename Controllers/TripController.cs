@@ -8,13 +8,13 @@ namespace tripAdvisorAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-//[Authorize]
+[Authorize]
 public class TripController(TripService tripService) : ControllerBase
 {
     private readonly TripService _tripService = tripService;
 
     [HttpGet]
-   // [AllowAnonymous]
+   [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<TripDTORead>>> GetTrips()
     {
         var trips = await _tripService.GetAllTripsAsync();
