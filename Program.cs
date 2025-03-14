@@ -18,7 +18,7 @@ var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 var databasePort = Environment.GetEnvironmentVariable("DATABASE_PORT");
 string connectionString;
 
-if (!string.IsNullOrEmpty(databaseUrl))
+if (Environment.GetEnvironmentVariable("ENVIRONMENT") == "production")
 {
     var uri = new Uri(databaseUrl);
     var userInfo = uri.UserInfo.Split(':');

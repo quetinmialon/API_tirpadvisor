@@ -12,6 +12,8 @@ public class AppDbContext : DbContext
     public DbSet<Activity> Activities { get; set; }
     public DbSet<TripActivity> TripActivities { get; set; } // Ajout de l'entité pivot
 
+    public DbSet<TripUsers> TripUsers { get; set; } // Ajout de l'entité pivot pour les voyages partagés
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // 🚀 Relation One-to-Many : User → Trips
@@ -36,5 +38,21 @@ public class AppDbContext : DbContext
             .WithMany(a => a.TripActivities)
             .HasForeignKey(ta => ta.ActivityId)
             .OnDelete(DeleteBehavior.Cascade); // ⚠️ Si une Activity est supprimée, ses relations aussi
+
+        // Relation Many-to-Many : Trip // User pour les voyages partagés
+        modelBuilder.Entity<TripUsers>()
+           .HasKey(tu => new { tu.TripId, tu.UserId });
+
+        modelBuilder.Entity<TripUsers>()
+           .HasOne(tu => tu.Trip)
+           .WithMany(t => t.SharedUsers)
+           .HasForeignKey(tu => tu.TripId)
+           .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<TripUsers>()
+           .HasOne(tu => tu.User)
+           .WithMany(u => u.SharedTrips)
+           .HasForeignKey(tu => tu.UserId)
+           .OnDelete(DeleteBehavior.Restrict); // ⚠️ Empêche la suppression cascade sur User
     }
 }

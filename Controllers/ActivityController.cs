@@ -7,7 +7,7 @@ namespace tripAdvisorAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
+//[Authorize]
 public class ActivityController(ActivityService activityService) : ControllerBase
 {
     private readonly ActivityService _activityService = activityService;

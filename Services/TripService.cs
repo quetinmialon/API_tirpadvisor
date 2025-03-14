@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Web.Http.Routing.Constraints;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
@@ -125,5 +126,70 @@ public class TripService(AppDbContext context, IMapper mapper, UserService userS
 
         return true;
     }
+
+    public async Task<List<TripSharedDTORead>> GetSharedTripsForUser(int userId)
+{
+    var trips = await _context.Trips
+        .Include(t => t.User)
+        .Include(t => t.SharedUsers)
+            .ThenInclude(su => su.User)
+        .Include(t => t.TripActivities)
+            .ThenInclude(ta => ta.Activity)
+        .Where(t => t.SharedUsers.Any(su => su.UserId == userId))
+        .ToListAsync(); // Utilisation correcte d'une requête async
+
+    return _mapper.Map<List<TripSharedDTORead>>(trips);
+}
+
+
+    public async Task<bool> CreateSharedTrip(TripSharedDTO tripDto)
+{
+    var trip = _mapper.Map<Trip>(tripDto);
+    _context.Trips.Add(trip);
+    await _context.SaveChangesAsync(); // Appel asynchrone
+
+    return true;
+}
+
+
+    public async Task<TripSharedDTORead> UpdateSharedTrip(int tripId, TripSharedDTO tripDto)
+{
+    var trip = await _context.Trips
+        .Include(t => t.SharedUsers)
+        .Include(t => t.TripActivities)
+        .FirstOrDefaultAsync(t => t.Id == tripId); // Utiliser FirstOrDefaultAsync()
+
+    if (trip == null)
+    {
+        throw new KeyNotFoundException("Trip not found");
+    }
+
+    trip.Name = tripDto.Name;
+    trip.Location = tripDto.Location;
+    trip.StartDate = tripDto.StartDate;
+    trip.EndDate = tripDto.EndDate;
+    trip.IsPublic = tripDto.IsPublic;
+    trip.Budget = tripDto.Budget;
+    trip.SharedUsers = tripDto.SharedWith.Select(id => new TripUsers { UserId = id, TripId = tripId }).ToList();
+    trip.TripActivities = tripDto.ActivityIds?.Select(aid => new TripActivity { ActivityId = aid, TripId = tripId }).ToList() ?? new List<TripActivity>();
+
+    await _context.SaveChangesAsync(); // Sauvegarde asynchrone
+    return _mapper.Map<TripSharedDTORead>(trip);
+}
+
+
+    public async Task<bool> DeleteSharedTrip(int tripId)
+{
+    var trip = await _context.Trips.FindAsync(tripId); // Utiliser FindAsync()
+    if (trip == null)
+    {
+        return false;
+    }
+    _context.Trips.Remove(trip);
+    await _context.SaveChangesAsync(); // Sauvegarde asynchrone
+
+    return true;
+}
+
     
 }

@@ -8,7 +8,7 @@ namespace tripAdvisorAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
+//[Authorize]
 public class TripController(TripService tripService) : ControllerBase
 {
     private readonly TripService _tripService = tripService;
@@ -58,5 +58,33 @@ public class TripController(TripService tripService) : ControllerBase
     {
         var result = await _tripService.UpdateTripAsync(id, tripDto);
         return result ? NoContent() : NotFound();
+    }
+
+    [HttpGet("/sharedTrip/{userId}")]
+    public async Task<IActionResult> GetSharedTrip(int userId)
+    {
+        var sharedTrip = await _tripService.GetSharedTripsForUser(userId);
+        return sharedTrip == null? NotFound() : Ok(sharedTrip);
+    }
+
+    [HttpPost("/sharedTrip")]
+    public async Task<IActionResult> ShareTrip(TripSharedDTO tripShareDTO)
+    {
+        var result = await _tripService.CreateSharedTrip(tripShareDTO);
+        return Ok();
+    }
+
+    [HttpDelete("/sharedTrip/{tripId}")]
+    public async Task<IActionResult> DeleteSharedTrip(int tripId)
+    {
+        var result = await _tripService.DeleteSharedTrip(tripId);
+        return result? NoContent() : NotFound();
+    }
+
+    [HttpPut("/sharedTrip/{id}")]
+    public async Task<IActionResult> UpdateSharedTrip(int id, TripSharedDTO tripShareDTO)
+    {
+        var result = await _tripService.UpdateSharedTrip(id, tripShareDTO);
+        return result == null ? NoContent() : NotFound();
     }
 }

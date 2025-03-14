@@ -19,5 +19,8 @@ namespace tripAdvisorAPI.Models
 
         // Relation One-to-Many avec Trip
         public List<Trip> Trips { get; set; } = new List<Trip>();
+
+        //relation many to many avec Trips pour les voyages partagés
+        public List<TripUsers> SharedTrips { get; set; } = new List<TripUsers>();
     }
 }

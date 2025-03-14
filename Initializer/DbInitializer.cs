@@ -6,7 +6,6 @@ public class DbInitializer
 {
     public static void initialize(AppDbContext context)
     {
-        
         context.Database.EnsureCreated();
         
         //dummy data

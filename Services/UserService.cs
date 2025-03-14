@@ -22,4 +22,14 @@ public class UserService(IMapper mapper, AppDbContext context)
 
         return _mapper.Map<UserDTO>(user);
     }
+
+    public async Task<List<UserDTO>> GetAllUsers()
+    {
+        var users = await _context.Users
+            .AsNoTracking()
+            .ToListAsync();
+
+        return _mapper.Map<List<UserDTO>>(users);
+    }
+
 }

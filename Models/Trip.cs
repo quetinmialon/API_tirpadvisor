@@ -37,5 +37,9 @@ namespace tripAdvisorAPI.Models
 
         // Relation Many-to-Many avec Activity
         public ICollection<TripActivity> TripActivities { get; set; } = new List<TripActivity>();
+
+        // Relation Many-to-Many avec User pour les voyages partagés
+
+        public List<TripUsers> SharedUsers { get; set; } = new List<TripUsers>();
     }
 }
